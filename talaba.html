@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Talaba Platformasi</title>
+    <link rel="stylesheet" href="talaba.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 id="user-name">Yuklanmoqda...</h1>
+            <p class="balance">💰 Balingiz: <span id="user-points">0</span></p>
+        </header>
+
+        <div class="menu-grid">
+            <div class="menu-item" onclick="showNews()">
+                <span>🌐</span>
+                <p>Yangiliklar</p>
+            </div>
+            <div class="menu-item" onclick="showCrypto()">
+                <span>📊</span>
+                <p>Kripto</p>
+            </div>
+            <div class="menu-item" onclick="showJobs()">
+                <span>💼</span>
+                <p>Vakansiya</p>
+            </div>
+            <div class="menu-item" onclick="showRating()">
+                <span>🏆</span>
+                <p>Reyting</p>
+            </div>
+        </div>
+    </div>
+    <script src="talaba.js"></script>
+</body>
+</html>

@@ -1,0 +1,8 @@
+body { font-family: 'Segoe UI', sans-serif; background: #1a1a1a; color: white; margin: 0; padding: 20px; }
+.container { max-width: 500px; margin: auto; }
+header { text-align: center; background: #333; padding: 20px; border-radius: 20px; margin-bottom: 20px; border: 1px solid #444; }
+.balance { font-size: 20px; color: #f1c40f; }
+.menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.menu-item { background: #2c3e50; padding: 25px; border-radius: 15px; text-align: center; cursor: pointer; transition: 0.3s; }
+.menu-item:active { transform: scale(0.95); background: #34495e; }
+.menu-item span { font-size: 35px; display: block; margin-bottom: 10px; }
