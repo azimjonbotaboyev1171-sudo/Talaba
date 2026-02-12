@@ -35,16 +35,41 @@
             </select>
             <button onclick="register()" class="btn-main" id="t-auth-b">Platformaga kirish</button>
         </div>
-
-        <div id="screen-menu" style="display:none;">
-            <div class="grid">
-                <div class="item" onclick="alert('IELTS/English')">🇬🇧 IELTS</div>
-                <div class="item" onclick="alert('Business/Amon')">📈 Biznes</div>
-                <div class="item" onclick="alert('Crypto')">💰 Kripto</div>
-                <div class="item" onclick="alert('News')">🌍 Yangiliklar</div>
-            </div>
+        <div id="screen-menu" class="screen" style="display:none;">
+             <div class="grid">
+                <div class="item" onclick="openModule('english')">
+            <span>🇬🇧</span>
+            <p>IELTS / English</p>
+        </div>
+        <div class="item" onclick="openModule('business')">
+            <span>📈</span>
+            <p>Biznes Olami</p>
+        </div>
+        <div class="item" onclick="openModule('crypto')">
+            <span>💰</span>
+            <p>Kripto bozor</p>
+        </div>
+        <div class="item" onclick="openModule('jobs')">
+            <span>💼</span>
+            <p>Vakansiyalar</p>
+        </div>
+        <div class="item" onclick="openModule('news')">
+            <span>🌍</span>
+            <p>Yangiliklar</p>
+        </div>
+        <div class="item" onclick="openModule('cabinet')">
+            <span>👤</span>
+            <p>Kabinet</p>
         </div>
     </div>
+</div>
+
+    <div id="module-content" class="screen" style="display:none;">
+    <button onclick="showMainDashboard()" class="btn-back">⬅️ Orqaga</button>
+    <div id="module-body">
+        </div>
+     </div>
+</div>
     <script src="talaba.js"></script>
 </body>
 </html>
