@@ -4,36 +4,30 @@ tg.expand();
 let currentLang = localStorage.getItem('lang') || 'uz';
 
 const translations = {
-    uz: { auth: "Ro'yxatdan o'tish", welcome: "Xush kelibsiz" },
-    ru: { auth: "Регистрация", welcome: "Добро пожаловать" },
-    en: { auth: "Registration", welcome: "Welcome" }
+    uz: { auth: "Ro'yxatdan o'tish", btn: "Tasdiqlash", welcome: "Xush kelibsiz" },
+    ru: { auth: "Регистрация", btn: "Подтвердить", welcome: "Добро пожаловать" },
+    en: { auth: "Registration", btn: "Confirm", welcome: "Welcome" }
 };
-
-function setLanguage(lang) {
-    currentLang = lang;
-    localStorage.setItem('lang', lang);
-    document.getElementById('lang-screen').style.display = 'none';
-    document.getElementById('auth-screen').style.display = 'block';
-    updateUI();
-}
 
 function updateUI() {
     document.getElementById('auth-title').innerText = translations[currentLang].auth;
+    document.getElementById('reg-btn').innerText = translations[currentLang].btn;
 }
 
 function register() {
-    let data = {
-        name: document.getElementById('user-name').value,
-        phone: document.getElementById('user-phone').value,
-        pass: document.getElementById('user-pass').value,
-        lang: currentLang,
-        action: 'registration'
-    };
-    
-    if(data.name && data.phone) {
+    let name = document.getElementById('user-name').value;
+    let phone = document.getElementById('user-phone').value;
+
+    if(name && phone) {
+        let data = {
+            name: name,
+            phone: phone,
+            lang: currentLang,
+            action: 'registration'
+        };
         tg.sendData(JSON.stringify(data)); // Botga yuborish
         tg.close();
     } else {
-        alert("Barcha maydonlarni to'ldiring!");
+        alert("Iltimos, ism va tel raqamingizni kiriting!");
     }
 }
