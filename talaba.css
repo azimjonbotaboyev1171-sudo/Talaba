@@ -1,11 +1,160 @@
-:root { --primary: #0088cc; --bg: #f4f7f9; }
-body { font-family: 'Inter', sans-serif; background: var(--bg); margin: 0; }
-.top-nav { background: var(--primary); color: white; padding: 15px; display: flex; justify-content: space-between; align-items: center; position: sticky; top: 0; }
-.lang-selector button { background: rgba(255,255,255,0.2); border: none; color: white; padding: 5px 10px; border-radius: 5px; margin-left: 5px; cursor: pointer; }
-#app-container { max-width: 800px; margin: 0 auto; padding: 20px; }
-.screen { text-align: center; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
-.menu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px; }
-.card { background: #fff; padding: 25px; border-radius: 15px; border: 1px solid #eee; font-weight: bold; cursor: pointer; transition: 0.3s; }
-.card:hover { transform: translateY(-5px); border-color: var(--primary); }
-.primary-btn { width: 100%; padding: 15px; background: var(--primary); color: white; border: none; border-radius: 12px; font-size: 16px; font-weight: bold; margin-top: 20px; }
-input, select { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 10px; }
+/* Asosiy sozlamalar */
+:root {
+    --primary-color: #0088cc;
+    --secondary-color: #f4f7f9;
+    --text-dark: #2c3e50;
+    --white: #ffffff;
+    --shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--secondary-color);
+    margin: 0;
+    padding: 0;
+    color: var(--text-dark);
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+}
+
+/* Notebook va Katta ekranlar uchun konteyner */
+#app-container {
+    width: 100%;
+    max-width: 500px; /* Notebookda mobil ko'rinishini saqlaydi */
+    min-height: 100vh;
+    background: var(--white);
+    box-shadow: var(--shadow);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navigatsiya paneli (Tepadagi til tanlash) */
+.navbar {
+    background-color: var(--primary-color);
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: white;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo {
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.lang-box button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 6px;
+    margin-left: 5px;
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: 0.3s;
+}
+
+.lang-box button:hover {
+    background: white;
+    color: var(--primary-color);
+}
+
+/* Ekranlar uchun umumiy uslub */
+.screen {
+    padding: 30px 20px;
+    display: none; /* JS orqali boshqariladi */
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    animation: fadeIn 0.5s ease;
+}
+
+.screen.active {
+    display: flex;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Kartochkalar va Tugmalar */
+h2 { margin-bottom: 15px; font-size: 1.5rem; }
+p { color: #666; line-height: 1.6; margin-bottom: 25px; }
+
+.btn-main {
+    width: 100%;
+    padding: 16px;
+    background-color: var(--primary-color);
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0, 136, 204, 0.3);
+    transition: 0.3s;
+}
+
+.btn-main:active {
+    transform: scale(0.98);
+}
+
+/* Form elementlari */
+input, select {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    box-sizing: border-box;
+}
+
+input:focus {
+    border-color: var(--primary-color);
+}
+
+/* Menyu Grid (Asosiy sahifa uchun) */
+.grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    width: 100%;
+}
+
+.item {
+    background: #fff;
+    padding: 25px 10px;
+    border-radius: 18px;
+    border: 1px solid #eee;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.02);
+}
+
+.item:hover {
+    border-color: var(--primary-color);
+    background: #f0faff;
+    transform: translateY(-3px);
+}
+
+/* Mobil moslashuvchanlik */
+@media (max-width: 500px) {
+    #app-container {
+        max-width: 100%;
+        box-shadow: none;
+    }
+}
