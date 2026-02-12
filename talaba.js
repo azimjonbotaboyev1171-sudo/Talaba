@@ -1,33 +1,35 @@
 let tg = window.Telegram.WebApp;
 tg.expand();
 
-let currentLang = localStorage.getItem('lang') || 'uz';
+let currentLang = 'uz';
 
-const translations = {
-    uz: { auth: "Ro'yxatdan o'tish", btn: "Tasdiqlash", welcome: "Xush kelibsiz" },
-    ru: { auth: "Регистрация", btn: "Подтвердить", welcome: "Добро пожаловать" },
-    en: { auth: "Registration", btn: "Confirm", welcome: "Welcome" }
-};
-
-function updateUI() {
-    document.getElementById('auth-title').innerText = translations[currentLang].auth;
-    document.getElementById('reg-btn').innerText = translations[currentLang].btn;
+function setLanguage(lang) {
+    currentLang = lang;
+    alert("Til tanlandi: " + lang);
+    // Bu yerda matnlarni tanlangan tilga qarab o'zgartirish funksiyasini qo'shish mumkin
 }
 
-function register() {
+function startAuth() {
+    document.getElementById('quiz-screen').style.display = 'none';
+    document.getElementById('auth-screen').style.display = 'block';
+}
+
+function sendToBot() {
     let name = document.getElementById('user-name').value;
     let phone = document.getElementById('user-phone').value;
+    let status = document.getElementById('user-status').value;
 
     if(name && phone) {
-        let data = {
+        let result = {
+            action: "registration",
             name: name,
             phone: phone,
-            lang: currentLang,
-            action: 'registration'
+            status: status,
+            lang: currentLang
         };
-        tg.sendData(JSON.stringify(data)); // Botga yuborish
+        tg.sendData(JSON.stringify(result));
         tg.close();
     } else {
-        alert("Iltimos, ism va tel raqamingizni kiriting!");
+        alert("Iltimos, barcha maydonlarni to'ldiring!");
     }
 }

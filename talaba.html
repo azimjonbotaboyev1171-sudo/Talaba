@@ -2,46 +2,55 @@
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Talaba App</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yuksalish Platformasi</title>
     <link rel="stylesheet" href="talaba.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    <div id="app">
-        <div id="lang-screen" class="screen">
-            <div class="welcome-box">
-                <h1>Xush kelibsiz!</h1>
-                <p>Tilni tanlang / Выберите язык</p>
-                <button onclick="setLanguage('uz')">🇺🇿 O'zbekcha</button>
-                <button onclick="setLanguage('ru')">🇷🇺 Русский</button>
-                <button onclick="setLanguage('en')">🇺🇸 English</button>
+    <header class="top-nav">
+        <div class="lang-selector">
+            <span onclick="setLanguage('uz')">🇺🇿 UZ</span>
+            <span onclick="setLanguage('ru')">🇷🇺 RU</span>
+            <span onclick="setLanguage('en')">🇺🇸 EN</span>
+        </div>
+    </header>
+
+    <div id="app-container">
+        <div id="quiz-screen" class="screen">
+            <div class="card">
+                <h2 id="quiz-title">Sizni yuqori marralar kutmoqda!</h2>
+                <p id="quiz-text">Ushbu yuksalish platformasiga kirib, o'z kelajagingizni o'zgartirishga tayyormisiz? Uni yarim yolda tashlab ketmaysizmi?</p>
+                <div class="quiz-options">
+                    <button onclick="startAuth()">Ha, men tayyorman! 🚀</button>
+                    <button onclick="tg.close()">Yo'q, keyinchalik...</button>
+                </div>
             </div>
         </div>
 
         <div id="auth-screen" class="screen" style="display:none;">
-                    <h2 id="auth-title">Ro'yxatdan o'tish</h2>
-                    <div class="input-group">
-                    <input type="text" id="user-name" placeholder="Ism / Имя / Name">
-                    <input type="tel" id="user-phone" placeholder="+998901234567">
+            <div class="card">
+                <h2 id="auth-header">Ro'yxatdan o'tish</h2>
+                <input type="text" id="user-name" placeholder="Ismingiz">
+                <input type="tel" id="user-phone" placeholder="+998901234567">
+                <select id="user-status">
+                    <option value="student">Talaba</option>
+                    <option value="school">Maktab o'quvchisi</option>
+                    <option value="other">Boshqa foydalanuvchi</option>
+                </select>
+                <button class="primary-btn" onclick="sendToBot()">Platformaga kirish</button>
             </div>
-                <button class="primary-btn" id="reg-btn" onclick="register()">Tasdiqlash</button>
-            </div>
+        </div>
 
         <div id="main-dashboard" class="screen" style="display:none;">
-            <div id="home-section" class="content-section">
-                <div class="stats-card">
-                    <h3 id="welcome-msg">Salom!</h3>
-                    <p>Ballar: <span id="user-points">0</span></p>
-                </div>
+            <div class="grid-menu">
+                <div class="menu-item">💰 Kripto</div>
+                <div class="menu-item">📈 Biznes</div>
+                <div class="menu-item">🇬🇧 English</div>
+                <div class="menu-item">🇷🇺 Rus tili</div>
+                <div class="menu-item">🏢 Vakansiyalar</div>
+                <div class="menu-item">🏆 Reyting</div>
             </div>
-
-            <nav class="bottom-nav">
-                <button onclick="showSection('home')">🏠</button>
-                <button onclick="showSection('tests')">📝</button>
-                <button onclick="showSection('rating')">🏆</button>
-                <button onclick="showSection('profile')">👤</button>
-            </nav>
         </div>
     </div>
     <script src="talaba.js"></script>

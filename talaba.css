@@ -1,6 +1,11 @@
-body { font-family: sans-serif; background: #f0f2f5; margin: 0; padding: 0; overflow: hidden; }
-.screen { height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 20px; box-sizing: border-box; }
-.welcome-box, .profile-card { background: white; padding: 30px; border-radius: 20px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); width: 100%; text-align: center; }
-button { width: 100%; padding: 15px; margin: 10px 0; border: none; border-radius: 12px; background: #0088cc; color: white; font-weight: bold; cursor: pointer; }
-input { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ddd; border-radius: 10px; box-sizing: border-box; }
-.bottom-nav { position: fixed; bottom: 0; width: 100%; background: white; display: flex; justify-content: space-around; padding: 15px 0; border-top: 1px solid #eee; }
+body { font-family: 'Segoe UI', sans-serif; background: #eef2f7; margin: 0; color: #333; }
+#app-container { max-width: 600px; margin: 0 auto; min-height: 100vh; background: white; box-shadow: 0 0 20px rgba(0,0,0,0.1); }
+.top-nav { background: #0088cc; padding: 10px; text-align: right; position: sticky; top: 0; z-index: 100; }
+.lang-selector span { color: white; margin-left: 15px; cursor: pointer; font-weight: bold; font-size: 14px; }
+.screen { padding: 20px; display: flex; flex-direction: column; align-items: center; }
+.card { background: white; padding: 25px; border-radius: 20px; text-align: center; width: 90%; }
+input, select { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #ddd; border-radius: 10px; }
+button { background: #0088cc; color: white; border: none; padding: 15px 30px; border-radius: 10px; cursor: pointer; font-weight: bold; transition: 0.3s; }
+button:hover { background: #006699; }
+.grid-menu { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; width: 100%; }
+.menu-item { background: #f8f9fa; padding: 20px; border-radius: 15px; text-align: center; border: 1px solid #eee; font-weight: bold; }
