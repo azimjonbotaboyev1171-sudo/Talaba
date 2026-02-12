@@ -1,21 +1,39 @@
 let tg = window.Telegram.WebApp;
-tg.expand(); // Oynani to'liq ochish
+tg.expand();
 
-// Telegramdan foydalanuvchi ismini olish
-document.getElementById("user-name").innerText = "Salom, " + tg.initDataUnsafe.user.first_name + "!";
+let currentLang = localStorage.getItem('lang') || 'uz';
 
-function showNews() {
-    tg.showAlert("Bugungi yangiliklar: AI sohasida yangi o'zgarishlar kutilmoqda.");
+const translations = {
+    uz: { auth: "Ro'yxatdan o'tish", welcome: "Xush kelibsiz" },
+    ru: { auth: "Регистрация", welcome: "Добро пожаловать" },
+    en: { auth: "Registration", welcome: "Welcome" }
+};
+
+function setLanguage(lang) {
+    currentLang = lang;
+    localStorage.setItem('lang', lang);
+    document.getElementById('lang-screen').style.display = 'none';
+    document.getElementById('auth-screen').style.display = 'block';
+    updateUI();
 }
 
-function showCrypto() {
-    tg.showAlert("Bitcoin narxi: $96,000\nEthereum: $2,800");
+function updateUI() {
+    document.getElementById('auth-title').innerText = translations[currentLang].auth;
 }
 
-function showRating() {
-    tg.showConfirm("Hozircha reytingda birinchisiz! Batafsil ko'rishni xohlaysizmi?");
-}
-
-function showJobs() {
-    tg.showAlert("Yangi vakansiyalar: \n1. Python Developer\n2. SMM Manager");
+function register() {
+    let data = {
+        name: document.getElementById('user-name').value,
+        phone: document.getElementById('user-phone').value,
+        pass: document.getElementById('user-pass').value,
+        lang: currentLang,
+        action: 'registration'
+    };
+    
+    if(data.name && data.phone) {
+        tg.sendData(JSON.stringify(data)); // Botga yuborish
+        tg.close();
+    } else {
+        alert("Barcha maydonlarni to'ldiring!");
+    }
 }

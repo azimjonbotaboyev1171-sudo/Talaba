@@ -2,35 +2,47 @@
 <html lang="uz">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Talaba Platformasi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Talaba App</title>
     <link rel="stylesheet" href="talaba.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1 id="user-name">Yuklanmoqda...</h1>
-            <p class="balance">💰 Balingiz: <span id="user-points">0</span></p>
-        </header>
+    <div id="app">
+        <div id="lang-screen" class="screen">
+            <div class="welcome-box">
+                <h1>Xush kelibsiz!</h1>
+                <p>Tilni tanlang / Выберите язык</p>
+                <button onclick="setLanguage('uz')">🇺🇿 O'zbekcha</button>
+                <button onclick="setLanguage('ru')">🇷🇺 Русский</button>
+                <button onclick="setLanguage('en')">🇺🇸 English</button>
+            </div>
+        </div>
 
-        <div class="menu-grid">
-            <div class="menu-item" onclick="showNews()">
-                <span>🌐</span>
-                <p>Yangiliklar</p>
+        <div id="auth-screen" class="screen" style="display:none;">
+            <h2 id="auth-title">Ro'yxatdan o'tish</h2>
+            <div class="input-group">
+                <input type="text" id="user-name" placeholder="Ism / Имя">
+                <input type="tel" id="user-phone" placeholder="+998901234567">
+                <input type="password" id="user-pass" placeholder="Parol / Пароль">
             </div>
-            <div class="menu-item" onclick="showCrypto()">
-                <span>📊</span>
-                <p>Kripto</p>
+            <button class="primary-btn" onclick="register()">Tasdiqlash</button>
+        </div>
+
+        <div id="main-dashboard" class="screen" style="display:none;">
+            <div id="home-section" class="content-section">
+                <div class="stats-card">
+                    <h3 id="welcome-msg">Salom!</h3>
+                    <p>Ballar: <span id="user-points">0</span></p>
+                </div>
             </div>
-            <div class="menu-item" onclick="showJobs()">
-                <span>💼</span>
-                <p>Vakansiya</p>
-            </div>
-            <div class="menu-item" onclick="showRating()">
-                <span>🏆</span>
-                <p>Reyting</p>
-            </div>
+
+            <nav class="bottom-nav">
+                <button onclick="showSection('home')">🏠</button>
+                <button onclick="showSection('tests')">📝</button>
+                <button onclick="showSection('rating')">🏆</button>
+                <button onclick="showSection('profile')">👤</button>
+            </nav>
         </div>
     </div>
     <script src="talaba.js"></script>
