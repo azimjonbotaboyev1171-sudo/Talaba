@@ -3,53 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Yuksalish Platformasi</title>
+    <title>Yuksalish App</title>
     <link rel="stylesheet" href="talaba.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
 </head>
 <body>
-    <header class="top-nav">
-        <div class="lang-selector">
-            <span onclick="setLanguage('uz')">🇺🇿 UZ</span>
-            <span onclick="setLanguage('ru')">🇷🇺 RU</span>
-            <span onclick="setLanguage('en')">🇺🇸 EN</span>
+    <header class="navbar">
+        <div class="logo">EduTrack</div>
+        <div class="lang-box">
+            <button onclick="setLang('uz')">UZ</button>
+            <button onclick="setLang('ru')">RU</button>
+            <button onclick="setLang('en')">EN</button>
         </div>
     </header>
 
-    <div id="app-container">
-        <div id="quiz-screen" class="screen">
-            <div class="card">
-                <h2 id="quiz-title">Sizni yuqori marralar kutmoqda!</h2>
-                <p id="quiz-text">Ushbu yuksalish platformasiga kirib, o'z kelajagingizni o'zgartirishga tayyormisiz? Uni yarim yolda tashlab ketmaysizmi?</p>
-                <div class="quiz-options">
-                    <button onclick="startAuth()">Ha, men tayyorman! 🚀</button>
-                    <button onclick="tg.close()">Yo'q, keyinchalik...</button>
-                </div>
-            </div>
+    <div id="main-content">
+        <div id="screen-quiz" class="active">
+            <h2 id="t-quiz-h">Yuksak marralar kutmoqda!</h2>
+            <p id="t-quiz-p">Siz bu yo'lni oxirigacha bosib o'tishga tayyormisiz?</p>
+            <button onclick="goAuth()" class="btn-main" id="t-quiz-b">Ha, tayyorman! 🚀</button>
         </div>
 
-        <div id="auth-screen" class="screen" style="display:none;">
-            <div class="card">
-                <h2 id="auth-header">Ro'yxatdan o'tish</h2>
-                <input type="text" id="user-name" placeholder="Ismingiz">
-                <input type="tel" id="user-phone" placeholder="+998901234567">
-                <select id="user-status">
-                    <option value="student">Talaba</option>
-                    <option value="school">Maktab o'quvchisi</option>
-                    <option value="other">Boshqa foydalanuvchi</option>
-                </select>
-                <button class="primary-btn" onclick="sendToBot()">Platformaga kirish</button>
-            </div>
+        <div id="screen-auth" style="display:none;">
+            <h2 id="t-auth-h">Ro'yxatdan o'tish</h2>
+            <input type="text" id="inp-name" placeholder="Ismingiz">
+            <input type="tel" id="inp-phone" placeholder="+998XXXXXXXXX">
+            <select id="inp-status">
+                <option value="student">Talaba</option>
+                <option value="school">Maktab o'quvchisi</option>
+                <option value="other">Boshqa</option>
+            </select>
+            <button onclick="register()" class="btn-main" id="t-auth-b">Platformaga kirish</button>
         </div>
 
-        <div id="main-dashboard" class="screen" style="display:none;">
-            <div class="grid-menu">
-                <div class="menu-item">💰 Kripto</div>
-                <div class="menu-item">📈 Biznes</div>
-                <div class="menu-item">🇬🇧 English</div>
-                <div class="menu-item">🇷🇺 Rus tili</div>
-                <div class="menu-item">🏢 Vakansiyalar</div>
-                <div class="menu-item">🏆 Reyting</div>
+        <div id="screen-menu" style="display:none;">
+            <div class="grid">
+                <div class="item" onclick="alert('IELTS/English')">🇬🇧 IELTS</div>
+                <div class="item" onclick="alert('Business/Amon')">📈 Biznes</div>
+                <div class="item" onclick="alert('Crypto')">💰 Kripto</div>
+                <div class="item" onclick="alert('News')">🌍 Yangiliklar</div>
             </div>
         </div>
     </div>
