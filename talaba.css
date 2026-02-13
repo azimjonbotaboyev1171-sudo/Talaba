@@ -152,9 +152,16 @@ input:focus {
 }
 
 /* Mobil moslashuvchanlik */
-@media (max-width: 500px) {
-    #app-container {
-        max-width: 100%;
-        box-shadow: none;
+@media (max-width: 600px) {
+    .grid {
+        grid-template-columns: 1fr; /* Telefonda 1 ustun bo'lib tushadi */
+        gap: 10px;
+    }
+    .item {
+        padding: 15px; /* Tugmalarni kattaroq qilamiz */
+        font-size: 1.1rem;
+    }
+    .navbar {
+        padding: 10px;
     }
 }
